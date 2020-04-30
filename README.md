@@ -6,6 +6,8 @@ Initially, pre-trained model from STGAN [1] is used. You should clone the STGAN 
 
 For face recognition and image crop & align, imutils is used. Please install it by following the instructions at: https://github.com/jrosebr1/imutils
 
+Pre-trained model for facial landmark recognition is downloaded from https://github.com/davisking/dlib-models. It is available in the repo as 'shape_predictor_5_face_landmarks.dat'. Download and place in the current working directory. 
+
 
 
 References: 
