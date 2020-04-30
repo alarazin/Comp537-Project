@@ -115,7 +115,6 @@ class MainWindow(QMainWindow):
         selected=self.select_combo.currentText()
         print(selected)
         
-        '/Users/alarazindancioglu/Desktop/Comp537/shape_predictor_5_face_landmarks.dat'
         
         align_face(os.path.join(path,name), os.path.join(base_dir,"shape_predictor_5_face_landmarks.dat"), stgan_dir)
         #cwdir=os.getcwd()
