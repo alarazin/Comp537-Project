@@ -23,6 +23,10 @@ Working dir
 			
                 -sample_testing_divided
 
+You can run the model with the following command:
+
+	$ python comp537_ui.py --stgan_dir STGAN
+
 
 As described in STGAN github page, you can download list_attr_celeba.txt from https://drive.google.com/file/d/0B7EVK8r0v71pblRyaVFSWGxPY0U/view?usp=sharing and place it under data directory. 
 You do not have to download the CelebA dataset, but create img_align_celeba folder under data directory. 
