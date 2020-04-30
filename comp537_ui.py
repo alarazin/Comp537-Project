@@ -12,8 +12,16 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 import cv2
 import os 
+import argparse
 
 from face_align import align_face, divide_img
+
+parser=argparse.ArgumentParser()
+parser.add_argument('--stgan_dir', help='directory for STGAN model, relative to working directory', type=str)
+args=parser.parse_args()
+
+stgan_dir=args.stgan_dir
+base_dir=os.getcwd()
 
 
 
@@ -107,12 +115,16 @@ class MainWindow(QMainWindow):
         selected=self.select_combo.currentText()
         print(selected)
         align_face(os.path.join(path,name))
-        cwdir=os.getcwd()
-        os.chdir("./STGAN/STGAN")
+        #cwdir=os.getcwd()
+        #os.chdir("./STGAN/STGAN")
+        os.chdir(stgan_dir)
         system_input="python test.py --experiment_name 128 --dataroot data --img 202600 --test_atts "+selected+" --test_ints 2"
         os.system(system_input)
-        os.chdir(cwdir)
-        stgan_output="/Users/alarazindancioglu/Desktop/Comp537/STGAN/STGAN/output/128/sample_testing_multi/202600_['"+selected+"'].png"
+        stgan_output=os.path.join(os.getcwd(),"output/128/sample_testing_multi/202600_['"+selected+"'].png")
+        os.chdir(base_dir)
+        
+        #stgan_output="/Users/alarazindancioglu/Desktop/Comp537/STGAN/STGAN/output/128/sample_testing_multi/202600_['"+selected+"'].png"
+    
         path_orig, path_result= divide_img(stgan_output, num_atts=1)
         #print(stgan_output)
 
@@ -143,9 +155,10 @@ class Page2(QMainWindow):
         layout3=QVBoxLayout()
         
         
-        path_orig="/Users/alarazindancioglu/Desktop/Comp537/STGAN/STGAN/output/128/sample_testing_divided/202600_orig.jpg"
-        path_result="/Users/alarazindancioglu/Desktop/Comp537/STGAN/STGAN/output/128/sample_testing_divided/202600_result.jpg"
-   
+        #path_orig="/Users/alarazindancioglu/Desktop/Comp537/STGAN/STGAN/output/128/sample_testing_divided/202600_orig.jpg"
+        #path_result="/Users/alarazindancioglu/Desktop/Comp537/STGAN/STGAN/output/128/sample_testing_divided/202600_result.jpg"
+        path_orig=os.path.join(base_dir, stgan_dir, "output/128/sample_testing_divided/202600_orig.jpg")
+        path_result=os.path.join(base_dir, stgan_dir, "output/128/sample_testing_divided/202600_result.jpg")
         
         self.user_perf=QLabel()
         self.user_perf.setPixmap(QPixmap(path_orig))
