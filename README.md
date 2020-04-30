@@ -8,12 +8,19 @@ Certain folders should be added within STGAN directory. Their structure is as fo
 
 
 Working dir 
-    -STGAN
+
+    -STGAN	
+	
         -data
-            -img_align_celeba (folder)              
+		
+            -img_align_celeba (folder)
+			
             -list_attr_celeba.txt
+			
         -output
+		
             -128
+			
                 -sample_testing_divided
 
 
