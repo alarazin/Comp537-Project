@@ -17,6 +17,13 @@ Working dir
                 -sample_testing_divided
 
 
+As described in STGAN github page, you can download list_attr_celeba.txt from https://drive.google.com/file/d/0B7EVK8r0v71pblRyaVFSWGxPY0U/view?usp=sharing and place it under data directory. 
+You do not have to download the CelebA dataset, but create img_align_celeba folder under data directory. 
+Before editing facial attributes, change the attributes within list_attr_celeba.txt file (for 202600.jpg - last row) considering the attributes you have. 
+
+After downloading the pre-trained STGAN model, place it under STGAN/output folder and unzip. Later, create a folder named "sample_testing_divided" under output directory. 
+
+
 
 For face recognition and image crop & align, imutils is used. Please install it by following the instructions at: https://github.com/jrosebr1/imutils
 
