@@ -15,6 +15,8 @@ import cv2
 import os
 
 
+
+
 '''
 ap = argparse.ArgumentParser()
 ap.add_argument("-p", "--shape-predictor", required=True,
@@ -57,13 +59,10 @@ for rect in rects:
     
 '''
 
-# =============================================================================
-#BURASI FUNCTION OLARAK CAGIRMAK İÇİN  
-# =============================================================================
 
 
-def align_face(img_path):
-    shape_pred='/Users/alarazindancioglu/Desktop/Comp537/shape_predictor_5_face_landmarks.dat'
+def align_face(img_path, shape_pred, stgan_dir):
+    #shape_pred='/Users/alarazindancioglu/Desktop/Comp537/shape_predictor_5_face_landmarks.dat'
     detector = dlib.get_frontal_face_detector()
     predictor = dlib.shape_predictor(shape_pred)
     fa = FaceAligner(predictor, desiredFaceWidth=178, desiredFaceHeight=218, desiredLeftEye=(0.34,0.5))
@@ -88,15 +87,16 @@ def align_face(img_path):
         #cv2.imwrite("STGAN/STGAN/data/img_align_celeba/202600_align.jpg",faceAligned)
     	# display the output images
         #cv2.imshow("Original", faceOrig)
-    	cv2.imwrite("STGAN/STGAN/data/img_align_celeba/202600.jpg", faceAligned)
-    	pathAlign="STGAN/STGAN/data/img_align_celeba/202600.jpg"
+    	cv2.imwrite(os.path.join(stgan_dir,"data/img_align_celeba/202600.jpg"), faceAligned)
+        #cv2.imwrite(os.path.join(stgan_dir,"data/img_align_celeba/202600.jpg"), faceAligned)
+    	#pathAlign="STGAN/STGAN/data/img_align_celeba/202600.jpg"
         #cv2.imshow("Aligned", faceAligned)
     	cv2.waitKey(0)
-        
+        #cv2.imwrite("STGAN/STGAN/data/img_align_celeba/202600.jpg",faceAligned)
     #return pathAlign
 
 
-def divide_img(img_path, num_atts):
+def divide_img(img_path, base_dir, stgan_dir, num_atts):
    #cwdir=os.getcwd()
    #os.chdir("/Users/alarazindancioglu/Desktop/Comp537/STGAN/STGAN/att_classification")
    #import imlib as im
@@ -107,8 +107,11 @@ def divide_img(img_path, num_atts):
    img=np.expand_dims(img,axis=0)
    img=np.concatenate(np.split(img, 2, axis=2))
    
-   path_orig="/Users/alarazindancioglu/Desktop/Comp537/STGAN/STGAN/output/128/sample_testing_divided/202600_orig.jpg"
-   path_result="/Users/alarazindancioglu/Desktop/Comp537/STGAN/STGAN/output/128/sample_testing_divided/202600_result.jpg"
+   #path_orig="/Users/alarazindancioglu/Desktop/Comp537/STGAN/STGAN/output/128/sample_testing_divided/202600_orig.jpg"
+   #path_result="/Users/alarazindancioglu/Desktop/Comp537/STGAN/STGAN/output/128/sample_testing_divided/202600_result.jpg"
+   path_orig=os.path.join(base_dir, stgan_dir, "output/128/sample_testing_divided/202600_orig.jpg")
+   path_result=os.path.join(base_dir, stgan_dir, "output/128/sample_testing_divided/202600_result.jpg")
+   
    
    #im.imwrite(img[0], path_orig)
    #im.imwrite(img[1], path_result)

@@ -103,7 +103,7 @@ class MainWindow(QMainWindow):
     def capture_img(self):
         flag,frame=self.cap.read()
         frame=cv2.flip(frame,1)
-        base_dir=os.getcwd()
+        #base_dir=os.getcwd()
         path=os.path.join(base_dir, "test_imgs")
 
         if flag:
@@ -114,7 +114,10 @@ class MainWindow(QMainWindow):
                
         selected=self.select_combo.currentText()
         print(selected)
-        align_face(os.path.join(path,name))
+        
+        '/Users/alarazindancioglu/Desktop/Comp537/shape_predictor_5_face_landmarks.dat'
+        
+        align_face(os.path.join(path,name), os.path.join(base_dir,"shape_predictor_5_face_landmarks.dat"), stgan_dir)
         #cwdir=os.getcwd()
         #os.chdir("./STGAN/STGAN")
         os.chdir(stgan_dir)
@@ -125,7 +128,7 @@ class MainWindow(QMainWindow):
         
         #stgan_output="/Users/alarazindancioglu/Desktop/Comp537/STGAN/STGAN/output/128/sample_testing_multi/202600_['"+selected+"'].png"
     
-        path_orig, path_result= divide_img(stgan_output, num_atts=1)
+        path_orig, path_result= divide_img(stgan_output, base_dir, stgan_dir, num_atts=1)
         #print(stgan_output)
 
         
