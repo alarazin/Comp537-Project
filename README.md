@@ -2,7 +2,7 @@
 
 This project aims to build a formative feedback interface for facial expressions. 
 
-Clone StarGAN [1] repository (https://github.com/yunjey/StarGAN) to current working directory. Model trained with only the RaFD dataset is available at the log file. Trained models should be placed in StarGAN/stargan_rafd/models. 
+Clone [StarGAN](https://github.com/yunjey/StarGAN) [1] repository (https://github.com/yunjey/StarGAN) to current working directory. Model trained with only the RaFD dataset is available at the log file. Trained models should be placed in StarGAN/stargan_rafd/models. 
 Also create a folder named 'results_divided' in StarGAN/stargan_rafd folder. 
 
 For action unit detection, I have used models trained by https://github.com/jdlamstein/happybot. Clone the repo into 'happybot' folder and keep the facs_trial.py file. 
