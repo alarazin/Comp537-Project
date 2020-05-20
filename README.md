@@ -13,7 +13,7 @@ You do not need to download the RaFD dataset. Just use the folder structure prov
 You can run the model with the following command:
 
 
-  $ python stargan_ui.py
+    $ python stargan_ui.py
 
 
 For face recognition and image crop & align, imutils is used [2]. Please install it by following the instructions at: https://github.com/jrosebr1/imutils
